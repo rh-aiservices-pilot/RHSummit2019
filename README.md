@@ -9,6 +9,7 @@ This will require:
   * A Linux system (tested on Fedora)
   * Python 3
   * Python 3 virtualenv module
+  * The ability to untar .tar.gz files
   * Docker (with the ability for users to spawn containers, or you can copy the relevant line out of the notebook)
   * Access to the internet for pip installs and docker pulls
 
