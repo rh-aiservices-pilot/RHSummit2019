@@ -1,12 +1,10 @@
-
 import tensorflow as tf
+import keras
 import numpy as np
 import base64
 
-model_dir = 'mnist-model/'
-saved_model = tf.saved_model.locad(model_dir)
-predictor = saved_model.signatures['default']
-
+#load mnist-model.h5
+model = keras.models.load_model('mnist-model/mnist-model.h5')
 
 #user does not pass integer, random integer is selected automatically
 def predict():
@@ -19,11 +17,14 @@ def predict():
     plt.imshow(features, cmap="Greys")
 
     actual_label            = str(label)
-    single_predicated_label = str(model.predict(features.reshape((1,28,28,1)))[0].argmax())
+    single_predicted_label  = str(model.predict(features.reshape((1,28,28,1)))[0].argmax())
+    
+    print("Features:")
+    print("Actual label: " + str(label))
+    print("Predicted label: " + str(model.predict(features.reshape((1,28,28,1)))[0].argmax()))
     
     return {'prediction': single_predicted_label}
 
-print(predict())
-#test prediction function ===========================================
-#prediction = predict(single_test_text)  
-#print('returned prediction: ' + prediction)
+#test function
+predict()
+
